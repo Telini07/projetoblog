@@ -1,5 +1,5 @@
 <?php
-
+// responsavel por receber as instruções e fazer a inserção de dados atraves da extensão mysqli
 function insere(string $entidade, array $dados): bool
 {
     $retorno = false;
@@ -17,7 +17,7 @@ function insere(string $entidade, array $dados): bool
     $conexao = conecta();
 
     $stmt = mysqli_prepare($conexao, $instrucao);
-
+    // executa uma string como linha de codigo php
     eval('mysqli_stmt_bind_param($stmt, \'' . implode('', $tipo) . '\',$'
         . implode(', $', array_keys($dados)) . '); ');
 

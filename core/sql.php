@@ -1,5 +1,5 @@
 <?php
-
+//responsavel por fazer instruções pro banco de dados
 function insert (string $entidade, array $dados) : String 
 {
 $instrucao = "INSERT INTO {$entidade}";
@@ -12,8 +12,6 @@ $instrucao .= " VALUES ({$valores})";
 
 return $instrucao;
 }
-
-/* */
 
 function delete (string $entidade, array $criterio = []) : String
 {

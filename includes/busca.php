@@ -4,3 +4,4 @@
     <button class="btn btn-outline-sucess my-2 my-sm-0"
         type="submit">Buscar</button>
 </form>
+<!-- CASO O "ACTION" ESTEJA VAZIO, A BUSCA RETORNA A PAGINA PADRÃO-->

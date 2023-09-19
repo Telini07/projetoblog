@@ -15,6 +15,11 @@ foreach($_GET as $indice => $dado){
 }
 switch($acao){
     case 'insert':
+         $trimmedn = trim($nome);
+         $trimmede = trim($email);
+         $trimmeds = trim($senha);
+    if(empty($trimmedn && $trimmede && $trimmeds)){
+    }else{
         $dados =[
             'nome' => $nome,
             'email' => $email,
@@ -26,7 +31,7 @@ switch($acao){
                 'usuario',
                 $dados
             );
-
+        }
             break;
 
     case 'update':

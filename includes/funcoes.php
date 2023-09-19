@@ -7,4 +7,5 @@ function limparDados(string $dado) :string
 
     return $retorno;
 }
+// FUNCAO PARA LIMPAR DADOS/FORMATAR O HTML
 ?>

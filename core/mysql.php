@@ -6,14 +6,10 @@ function insere(string $entidade, array $dados): bool
 
     // verifica o preenchimento de dados
     foreach ($dados as $campo => $dado) {
-        if (empty($dado)) {
-            // a inserção é encerrada caso haja um campo nulo
-            return false; 
-        } else{
             $coringa[$campo] = '?';
             $tipo[] = gettype($dado)[0];
             $$campo = $dado;
-        }
+        
     }
 
     $instrucao = insert($entidade, $coringa);

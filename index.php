@@ -39,7 +39,7 @@
                         $$indice = limparDados($dado);
                     }
 
-                    $data_atual = date('Y-m-d H:i:s');
+                    $data_atual = date('Y-m-d H:i:s'); // atribui o horario igual ao do servidor
 
                     $criterio = [
                         ['data_postagem', '<=', $data_atual]

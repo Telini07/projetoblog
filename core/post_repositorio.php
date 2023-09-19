@@ -17,7 +17,12 @@ foreach($_GET as $indice => $dado) {
 $id = (int)$id;
 
 switch($acao){
+    
     case 'insert':
+    $trimmedt = trim($texto);
+    $trimmedT = trim($titulo);
+    if(empty($trimmedt && $trimmedT)){
+    }else{
         $dados =[
             'titulo' => $titulo,
             'texto' => $texto,
@@ -29,9 +34,8 @@ switch($acao){
             'post',
             $dados
         );
-
+        }
         break;
-
         case 'update':
             $dados = [
                 'titulo' => $titulo,
@@ -63,5 +67,6 @@ switch($acao){
 
                 break;
 }
+
 header('Location: ../index.php');
 ?>

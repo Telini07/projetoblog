@@ -4,7 +4,7 @@ require_once '../includes/funcoes.php';
 require_once 'conexao_mysql.php';
 require_once 'sql.php';
 require_once 'mysql.php';
-$salt = '$exemplosaltifsp';
+$salt = 'IFSP'; // criptografia
 
 foreach($_POST as $indice => $dado){
     $$indice = limparDados($dado);
@@ -18,6 +18,7 @@ switch($acao){
         $dados =[
             'nome' => $nome,
             'email' => $email,
+            // criptografia
             'senha' => crypt($senha,$salt)
             ];
 

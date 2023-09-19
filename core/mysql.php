@@ -1,36 +1,43 @@
 <?php
 
-function insere (string $entidade, array $dados) : bool
+function insere(string $entidade, array $dados): bool
 {
     $retorno = false;
 
+    // verifica o preenchimento de dados
     foreach ($dados as $campo => $dado) {
-        $coringa[$campo] = '?';
-        $tipo[] = gettype($dado) [0];
-        $$campo = $dado;
+        if (empty($dado)) {
+            // a inserção é encerrada caso haja um campo nulo
+            return false; 
+        } else{
+            $coringa[$campo] = '?';
+            $tipo[] = gettype($dado)[0];
+            $$campo = $dado;
+        }
     }
 
     $instrucao = insert($entidade, $coringa);
 
     $conexao = conecta();
 
-    $stmt = mysqli_prepare ($conexao, $instrucao);
+    $stmt = mysqli_prepare($conexao, $instrucao);
 
-    eval('mysqli_stmt_bind_param($stmt, \'' . implode('',$tipo) . '\',$'
-    . implode(', $', array_keys($dados)) . '); ');
+    eval('mysqli_stmt_bind_param($stmt, \'' . implode('', $tipo) . '\',$'
+        . implode(', $', array_keys($dados)) . '); ');
 
     mysqli_stmt_execute($stmt);
-    
-    $retorno = (boolean) mysqli_stmt_affected_rows($stmt);
+
+    $retorno = (boolean)mysqli_stmt_affected_rows($stmt);
 
     $_SESSION['erros'] = mysqli_stmt_error_list($stmt);
 
     mysqli_stmt_close($stmt);
 
-    desconecta ($conexao);
+    desconecta($conexao);
 
     return $retorno;
 }
+
 
 function atualiza(string $entidade, array $dados, array $criterio = []) : bool
 {
